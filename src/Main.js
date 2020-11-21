@@ -1,0 +1,102 @@
+import React from 'react';
+import Strings from './config/Strings.json';
+import Search from './components/Search.js';
+import MovieItem from './components/MovieItem.js';
+import { ZooshSearch, ZooshTrending } from './scripts/ZooshSearch';
+import './Main.css';
+
+class Main extends React.Component {
+
+  // Constructor
+  constructor( props ) {
+    super( props );
+
+    this.state = {
+      loading: false,
+      error: false,
+      title: '',
+      results: []
+    };
+  }
+
+  // Initial State
+  componentDidMount() {
+    this.loadingState();
+
+    ZooshTrending()
+      .then( res => this.setState( { loading: false, title: Strings.Main.TitleTrending, results: res } ) )
+      .catch( res => this.exceptionHandler( res ) );
+  }
+
+  // Loading State for API request
+  loadingState() {
+    this.setState( { loading: true, results: [] } );
+  }
+
+  // Exception Handler for API request
+  exceptionHandler( error ) {
+    this.setState( { error: true, loading: false, results: [] } );
+    console.log( error );
+  }
+
+  // Event Handler for Form Submit
+  onSubmitHandler = async e => {
+    e.preventDefault();
+
+    // Get searching string
+    const searchString = e.target.elements.search.value;
+
+    // We are start loading
+    this.loadingState();
+
+    if ( !searchString ) {
+      // Show Trending list if no search string
+      ZooshTrending()
+        .then( res => this.setState( { loading: false, title: Strings.Main.TitleTrending, results: res } ) )
+        .catch( res => this.exceptionHandler( res ) );
+    } else {
+      // Show Results
+      ZooshSearch( searchString )
+        .then( res => this.setState( { loading: false, title: Strings.Main.TitleSearchResults + searchString, results: res } ) )
+        .catch( res => this.exceptionHandler( res ) );
+    }
+  }
+
+  // Render Content
+  render() {
+    let title;
+
+    // Results
+    if ( !this.state.results.length ) {
+      title = <h2 className="info">{ Strings.Main.InfoNoResults }</h2>;
+    } else {
+      title = <h2>{ this.state.title }</h2>;
+    }
+
+    // Loading
+    if ( this.state.loading ) {
+      title = <h2 className="info">{ Strings.Main.InfoLoading }</h2>;
+    }
+
+    // Error
+    if ( this.state.error ) {
+      title = <h2 className="info">{ Strings.Main.InfoError }</h2>;
+    }
+
+    // Render return
+    return (
+      <main>
+        <Search onSubmit={ this.onSubmitHandler }>{ Strings.Main.TitleHeroQuote } &mdash; <i>{ Strings.Main.TitleHeroAuthor }</i></Search>
+        <section className="container results">
+          { title }
+          { this.state.results.map( ( item, index ) => (
+            <MovieItem key={ index } data={ item.node } />
+          ) ) }
+        </section>
+      </main>
+    )
+  };
+
+}
+
+export default Main;

@@ -1,0 +1,17 @@
+{
+    "Defaults": {
+        "TitleAppBar": "Welcome in React TMDb Test App",
+        "TitleFooter": "This is the footer of application"
+    },
+    "Main": {
+        "TitleHeroQuote": "Every time I go to a movie, it's magic, no matter what the movie's about.",
+        "TitleHeroAuthor": "Steven Spielberg",
+        "LabelSearchField": "Search for movies by title",
+        "LabelSearchButton": "Let's rock",
+        "TitleTrending": "Trending now on TMDb",
+        "TitleSearchResults": "Search results for: ",
+        "InfoNoResults": "Opps. We couldn't find any results...",
+        "InfoLoading": "Just a moment, we are working...",
+        "InfoError": "Opps. Something went wrong, please try again later."
+    }
+}
