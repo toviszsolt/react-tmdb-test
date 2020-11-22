@@ -1,6 +1,5 @@
 # Getting Started
 
-- Check live version: [https://react-tmdb-test.itsysgenius.hu/](https://react-tmdb-test.itsysgenius.hu/)
 - Clone repository: `git clone https://github.com/toviszsolt/react-tmdb-test.git`
 - Install NPM packages: `npm install`
 - Start developer server: `npm run start`
