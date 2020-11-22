@@ -30,7 +30,7 @@ class Main extends React.Component {
 
   // Loading State for API request
   loadingState() {
-    this.setState( { loading: true, results: [] } );
+    this.setState( { error: false, loading: true, results: [] } );
   }
 
   // Exception Handler for API request
