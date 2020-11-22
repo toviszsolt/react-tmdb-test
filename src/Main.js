@@ -64,23 +64,24 @@ class Main extends React.Component {
 
   // Render Content
   render() {
-    let title;
+    const { title, results, loading, error } = this.state;
+    let mainTitle;
 
     // Results
-    if ( !this.state.results.length ) {
-      title = <h2 className="info">{ Strings.Main.InfoNoResults }</h2>;
+    if ( !results.length ) {
+      mainTitle = <h2 className="info">{ Strings.Main.InfoNoResults }</h2>;
     } else {
-      title = <h2>{ this.state.title }</h2>;
+      mainTitle = <h2>{ title }</h2>;
     }
 
     // Loading
-    if ( this.state.loading ) {
-      title = <h2 className="info">{ Strings.Main.InfoLoading }</h2>;
+    if ( loading ) {
+      mainTitle = <h2 className="info">{ Strings.Main.InfoLoading }</h2>;
     }
 
     // Error
-    if ( this.state.error ) {
-      title = <h2 className="info">{ Strings.Main.InfoError }</h2>;
+    if ( error ) {
+      mainTitle = <h2 className="info">{ Strings.Main.InfoError }</h2>;
     }
 
     // Render return
@@ -88,8 +89,8 @@ class Main extends React.Component {
       <main>
         <Search onSubmit={ this.onSubmitHandler }>{ Strings.Main.TitleHeroQuote } &mdash; <i>{ Strings.Main.TitleHeroAuthor }</i></Search>
         <section className="container results">
-          { title }
-          { this.state.results.map( ( item, index ) => (
+          { mainTitle }
+          { results.map( ( item, index ) => (
             <MovieItem key={ index } data={ item.node } />
           ) ) }
         </section>
