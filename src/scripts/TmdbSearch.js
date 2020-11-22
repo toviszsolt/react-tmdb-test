@@ -1,8 +1,7 @@
-//const API_ENDPOINT = 'http://tmdb.sandbox.zoosh.ie/';
 const API_ENDPOINT = '/api/';
 
-// Basic fetch for Zoosh API endpoint
-const ZooshFetch = async query => {
+// Basic fetch for TMDb API endpoint
+const TmdbFetch = async query => {
     const options = {
         method: 'post',
         headers: { 'content-type': 'application/json' },
@@ -34,28 +33,28 @@ edges { node {
 `;
 
 // Validate json data
-const ZooshValidate = json => json.filter( el => el.node && el.node.id );
+const TmdbValidate = json => json.filter( el => el.node && el.node.id );
 
 // Fetch Trending Movies
-const ZooshTrending = async () => {
-    const json = await ZooshFetch(
+const TmdbTrending = async () => {
+    const json = await TmdbFetch(
         `{ trending {
             ${qglBody}
         } }`
     );
 
-    return await json.data ? ZooshValidate( json.data.trending.edges ) : [];
+    return await json.data ? TmdbValidate( json.data.trending.edges ) : [];
 }
 
 // Search Movie by Title
-const ZooshSearch = async movieTitle => {
-    const json = await ZooshFetch(
+const TmdbSearch = async movieTitle => {
+    const json = await TmdbFetch(
         `{ search(term: "${movieTitle}") {
             ${qglBody}
         } }`
     );
 
-    return await json.data ? ZooshValidate( json.data.search.edges ) : [];
+    return await json.data ? TmdbValidate( json.data.search.edges ) : [];
 }
 
-export { ZooshSearch, ZooshTrending }
+export { TmdbSearch, TmdbTrending }

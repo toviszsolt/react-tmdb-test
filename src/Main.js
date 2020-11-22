@@ -2,7 +2,7 @@ import React from 'react';
 import Strings from './config/Strings.json';
 import Search from './components/Search.js';
 import MovieItem from './components/MovieItem.js';
-import { ZooshSearch, ZooshTrending } from './scripts/ZooshSearch';
+import { TmdbSearch, TmdbTrending } from './scripts/TmdbSearch';
 import './Main.css';
 
 class Main extends React.Component {
@@ -23,7 +23,7 @@ class Main extends React.Component {
   componentDidMount() {
     this.loadingState();
 
-    ZooshTrending()
+    TmdbTrending()
       .then( res => this.setState( { loading: false, title: Strings.Main.TitleTrending, results: res } ) )
       .catch( res => this.exceptionHandler( res ) );
   }
@@ -51,12 +51,12 @@ class Main extends React.Component {
 
     if ( !searchString ) {
       // Show Trending list if no search string
-      ZooshTrending()
+      TmdbTrending()
         .then( res => this.setState( { loading: false, title: Strings.Main.TitleTrending, results: res } ) )
         .catch( res => this.exceptionHandler( res ) );
     } else {
       // Show Results
-      ZooshSearch( searchString )
+      TmdbSearch( searchString )
         .then( res => this.setState( { loading: false, title: Strings.Main.TitleSearchResults + searchString, results: res } ) )
         .catch( res => this.exceptionHandler( res ) );
     }
