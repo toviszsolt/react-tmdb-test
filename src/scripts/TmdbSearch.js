@@ -54,7 +54,7 @@ const TmdbTrending = async () => {
 // Search Movie by Title
 const TmdbSearch = async movieTitle => {
     const json = await TmdbFetch(
-        `{ search(term: "${movieTitle}") {
+        `{ search(term: "${movieTitle.replace( /"/g, '&quot;' )}") {
             ${qglBody}
         } }`
     );

@@ -44,7 +44,7 @@ class Main extends React.Component {
     e.preventDefault();
 
     // Get searching string
-    const searchString = escape( e.target.elements.search.value );
+    const searchString = e.target.elements.search.value;
 
     // We are start loading
     this.loadingState();
