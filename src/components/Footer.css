@@ -6,3 +6,7 @@ footer {
   color: #bdbdbd;
   text-align: center;
 }
+
+footer a {
+  color: inherit;
+}

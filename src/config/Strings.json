@@ -1,7 +1,7 @@
 {
     "Defaults": {
         "TitleAppBar": "Welcome in React TMDb Test App",
-        "TitleFooter": "This is the footer of application"
+        "LinkFooter": "https://github.com/toviszsolt/react-tmdb-test"
     },
     "Main": {
         "TitleHeroQuote": "Every time I go to a movie, it's magic, no matter what the movie's about.",

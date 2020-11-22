@@ -11,7 +11,7 @@ ReactDOM.render(
   <React.StrictMode>
     <AppBar>{ Strings.Defaults.TitleAppBar }</AppBar>
     <Main />
-    <Footer>{ Strings.Defaults.TitleFooter }</Footer>
+    <Footer><a href={ Strings.Defaults.LinkFooter } target="_blank" rel="noreferrer">{ Strings.Defaults.LinkFooter }</a></Footer>
   </React.StrictMode>,
   document.getElementById( 'root' )
 );
