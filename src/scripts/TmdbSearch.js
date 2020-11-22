@@ -1,3 +1,8 @@
+/**
+ * Proxied API endpoint
+ * Development -> implemented in /src/setupProxy.js
+ * Production -> need implement proxy or server side script
+ */
 const API_ENDPOINT = '/api/';
 
 // Basic fetch for TMDb API endpoint
