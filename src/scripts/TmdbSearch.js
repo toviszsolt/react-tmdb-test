@@ -6,11 +6,11 @@
 const API_ENDPOINT = '/api/';
 
 // Basic fetch for TMDb API endpoint
-const TmdbFetch = async query => {
+const TmdbFetch = async ( query, variables ) => {
     const options = {
         method: 'post',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify( { query: query } )
+        body: JSON.stringify( { query: query, variables: variables } )
     };
 
     const res = await fetch( API_ENDPOINT, options );
@@ -43,9 +43,11 @@ const TmdbValidate = json => json.filter( el => el.node && el.node.id );
 // Fetch Trending Movies
 const TmdbTrending = async () => {
     const json = await TmdbFetch(
-        `{ trending {
-            ${qglBody}
-        } }`
+        `query {
+            trending {
+                ${qglBody}
+            }
+        }`
     );
 
     return await json.data ? TmdbValidate( json.data.trending.edges ) : [];
@@ -54,9 +56,11 @@ const TmdbTrending = async () => {
 // Search Movie by Title
 const TmdbSearch = async movieTitle => {
     const json = await TmdbFetch(
-        `{ search(term: "${movieTitle.replace( /"/g, '&quot;' )}") {
-            ${qglBody}
-        } }`
+        `query($movieTitle: String!) {
+            search(term: $movieTitle) {
+                ${qglBody}
+            }
+        }`, { movieTitle: movieTitle }
     );
 
     return await json.data ? TmdbValidate( json.data.search.edges ) : [];
