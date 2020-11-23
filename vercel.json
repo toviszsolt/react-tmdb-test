@@ -1,8 +1,8 @@
 {
     "rewrites": [
         {
-            "source": "/api/:match*",
-            "destination": "https://tmdb.apps.quintero.io/:match*"
+            "source": "/api/",
+            "destination": "https://tmdb.apps.quintero.io/"
         }
     ]
 }
