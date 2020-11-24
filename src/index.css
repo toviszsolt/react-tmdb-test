@@ -84,3 +84,9 @@ button {
   margin: 0 auto;
   padding: 12pt 4pt;
 }
+
+.text-trim {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

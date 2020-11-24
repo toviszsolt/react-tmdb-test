@@ -63,12 +63,15 @@ class MovieItem extends React.Component {
 
         // IMDb link
         if ( imdbUrl ) {
-            imdbLink = <a href={ imdbUrl } target="_blank" rel="noreferrer">{ imdbUrl }</a>;
+            imdbLink = <a href={ imdbUrl } target="_blank" rel="noreferrer" className="text-trim">{ imdbUrl }</a>;
         }
 
         // Wikipedia link
         if ( resultsWikipedia.length && resultsWikipedia.canonicalurl ) {
-            wikipediaLink = <a href={ resultsWikipedia.canonicalurl } target="_blank" rel="noreferrer">{ resultsWikipedia.canonicalurl }</a>
+            wikipediaLink =
+                <a href={ resultsWikipedia.canonicalurl } target="_blank" rel="noreferrer" className="text-trim">
+                    { resultsWikipedia.canonicalurl }
+                </a>;
         }
 
         // Loading
@@ -80,13 +83,13 @@ class MovieItem extends React.Component {
             <article>
                 <img src={ data.poster || PosterPlaceholder } alt={ data.title + ' poster image' } />
                 <div className="details">
-                    <h3 className="title" onClick={ this.toggleExtra }>{ data.title } &mdash; { data.__typename.replace( 'Result', '' ) }</h3>
-                    <div className="category">{ ( data.details.genres || [] ).map( el => el.name ).join( ', ' ) }</div>
+                    <h3 className="title text-trim" onClick={ this.toggleExtra }>{ data.title } &mdash; { data.__typename.replace( 'Result', '' ) }</h3>
+                    <div className="category text-trim">{ ( data.details.genres || [] ).map( el => el.name ).join( ', ' ) }</div>
                     <div className="released">{ new Date( data.releaseDate ).toLocaleDateString( 'en-EN', this.dateFormat ) }</div>
                     <div className="description">{ data.overview }</div>
                     <div className="rating">{ data.rating }</div>
                     <div className={ `extra ${isExtraVisible ? 'active' : ''}` }>
-                        <div className="title" onClick={ this.toggleExtra }>{ data.title } &mdash; External Resourses</div>
+                        <div className="title text-trim" onClick={ this.toggleExtra }>{ data.title } &mdash; External Resourses</div>
                         <div className="category">
                             { imdbLink }
                             { wikipediaLink }

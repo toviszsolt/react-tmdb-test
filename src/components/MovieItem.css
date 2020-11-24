@@ -31,9 +31,6 @@
   padding-right: 25pt;
   font-size: 120%;
   font-weight: bold;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   cursor: pointer;
   color: #e91e63;
   margin: 0;
@@ -51,7 +48,6 @@
 .results article .description {
   margin-top: 6pt;
   overflow: hidden;
-  display: block;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -92,9 +88,6 @@
 }
 
 .results article .extra a {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   display: block;
   color: inherit;
 }
