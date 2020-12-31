@@ -26,11 +26,11 @@ const TmdbFetch = async ( query, variables ) => {
 const qglBody = `
 totalCount pageInfo { hasNextPage endCursor }
 edges { node {
-    ... on Movie {
+    ... on MovieResult {
         __typename id title rating releaseDate overview poster(size: W154) details { genres { name } }
         externalIds { imdb }
     }
-    ... on TVShow {
+    ... on TVShowResult {
         __typename id title:name rating releaseDate:firstAirDate overview poster(size:W154) details { genres{ name } }
         externalIds { imdb }
     }
