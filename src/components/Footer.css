@@ -3,10 +3,14 @@ footer {
   margin-top: auto;
   padding: 48pt 6pt;
   background-color: #212121;
-  color: #bdbdbd;
+  color: white;
   text-align: center;
 }
 
 footer a {
-  color: inherit;
+  color: #bdbdbd;
+}
+
+footer a:hover {
+  color: #dbdbdb;
 }
