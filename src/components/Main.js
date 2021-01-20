@@ -6,13 +6,22 @@ import SearchBar from './SearchBar'
 import Movie from './Movie'
 import styles from './styles/Main.module.css'
 
+// ----- Title ------------------------------------------------------------------------------------------------------ //
+
 const Title = ( { title } ) => {
-    const className = title === Strings.Main.InfoLoading || title === Strings.Main.InfoNoResults ? styles.loading : null
+    const info = [
+        Strings.Main.InfoLoading,
+        Strings.Main.InfoError,
+        Strings.Main.InfoNoResults
+    ]
+    const className = info.includes( title ) ? styles.loading : null
 
     return (
         <h2 className={ className }>{ title }</h2>
     )
 }
+
+// ----- Main ------------------------------------------------------------------------------------------------------- //
 
 const Main = () => {
 
@@ -31,7 +40,9 @@ const Main = () => {
                 setTitle( res.length ? Strings.Main.TitleTrending : Strings.Main.InfoNoResults )
                 setResults( res )
             } )
-            .catch( res => this.exceptionHandler( res ) )
+            .catch( res => {
+                setTitle( Strings.Main.InfoError )
+            } )
     }, [] )
 
 
@@ -48,7 +59,9 @@ const Main = () => {
                     setTitle( res.length ? Strings.Main.TitleTrending : Strings.Main.InfoNoResults )
                     setResults( res )
                 } )
-                .catch( res => this.exceptionHandler( res ) )
+                .catch( res => {
+                    setTitle( Strings.Main.InfoError )
+                } )
         } else {
             // Show Results
             TmdbSearch( searchString )
@@ -56,7 +69,9 @@ const Main = () => {
                     setTitle( res.length ? Strings.Main.TitleSearchResults + searchString : Strings.Main.InfoNoResults )
                     setResults( res )
                 } )
-                .catch( res => this.exceptionHandler( res ) )
+                .catch( res => {
+                    setTitle( Strings.Main.InfoError )
+                } )
         }
     }
 
