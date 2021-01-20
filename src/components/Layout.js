@@ -37,7 +37,7 @@ export const Hero = ( { children } ) => {
 
 export const Results = ( { children } ) => {
     return (
-        <section className="results">
+        <section>
             <Container>
                 { children }
             </Container>
