@@ -1,28 +1,43 @@
-/**
- * Proxied API endpoint
- * Development -> implemented in /src/setupProxy.js
- * Production -> need implement proxy or server side script
- */
+const axios = require( 'axios' );
+
 const API_ENDPOINT = '/api/'
 
-// Basic fetch for TMDb API endpoint
 const TmdbFetch = async ( query, variables ) => {
-    const options = {
-        method: 'post',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify( { query: query, variables: variables } )
-    }
+    const res = await axios.post( API_ENDPOINT, { query: query, variables: variables } )
 
-    const res = await fetch( API_ENDPOINT, options )
-
-    if ( !res.ok ) {
+    if ( res.status !== 200 ) {
         throw new Error( res.status )
     }
 
-    return await res.json()
+    return await res.data
 }
 
-// GrapghQL Body
+export const TmdbTrending = async () => {
+    const res = await TmdbFetch(
+        `query {
+            trending {
+                ${qglBody}
+            }
+        }`
+    )
+
+    return await res.data ? TmdbValidate( res.data.trending.edges ) : []
+}
+
+export const TmdbSearch = async movieTitle => {
+    const json = await TmdbFetch(
+        `query($movieTitle: String!) {
+            search(term: $movieTitle) {
+                ${qglBody}
+            }
+        }`, { movieTitle: movieTitle }
+    )
+
+    return await json.data ? TmdbValidate( json.data.search.edges ) : []
+}
+
+const TmdbValidate = json => json.filter( el => el.node && el.node.id )
+
 const qglBody = `
 totalCount pageInfo { hasNextPage endCursor }
 edges { node {
@@ -36,34 +51,3 @@ edges { node {
     }
 } }
 `
-
-// Validate json data
-const TmdbValidate = json => json.filter( el => el.node && el.node.id )
-
-// Fetch Trending Movies
-const TmdbTrending = async () => {
-    const json = await TmdbFetch(
-        `query {
-            trending {
-                ${qglBody}
-            }
-        }`
-    )
-
-    return await json.data ? TmdbValidate( json.data.trending.edges ) : []
-}
-
-// Search Movie by Title
-const TmdbSearch = async movieTitle => {
-    const json = await TmdbFetch(
-        `query($movieTitle: String!) {
-            search(term: $movieTitle) {
-                ${qglBody}
-            }
-        }`, { movieTitle: movieTitle }
-    )
-
-    return await json.data ? TmdbValidate( json.data.search.edges ) : []
-}
-
-export { TmdbSearch, TmdbTrending }
