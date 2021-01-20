@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Container, AppBar, Hero, Results, Footer } from './Layout'
-import { TmdbSearch, TmdbTrending } from '../scripts/TmdbSearch'
+import { TmdbSearch, TmdbTrending } from '../modules/TmdbSearch'
 import Strings from './Strings'
 import SearchBar from './SearchBar'
 import Movie from './Movie'

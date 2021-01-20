@@ -2,7 +2,7 @@ import { useState } from 'react'
 import styles from './styles/Movie.module.css'
 import Strings from './Strings'
 import { Card } from './Core'
-import WikipediaSearch from '../scripts/WikipediaSearch'
+import WikipediaSearch from '../modules/WikipediaSearch'
 import PosterPlaceholder from '../images/moviePlaceholder.png'
 
 /* ----- Date Formatter --------------------------------------------------------------------------------------------- */
