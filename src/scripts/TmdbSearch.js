@@ -3,7 +3,7 @@
  * Development -> implemented in /src/setupProxy.js
  * Production -> need implement proxy or server side script
  */
-const API_ENDPOINT = '/api/';
+const API_ENDPOINT = '/api/'
 
 // Basic fetch for TMDb API endpoint
 const TmdbFetch = async ( query, variables ) => {
@@ -11,15 +11,15 @@ const TmdbFetch = async ( query, variables ) => {
         method: 'post',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify( { query: query, variables: variables } )
-    };
-
-    const res = await fetch( API_ENDPOINT, options );
-
-    if ( !res.ok ) {
-        throw new Error( res.status );
     }
 
-    return await res.json();
+    const res = await fetch( API_ENDPOINT, options )
+
+    if ( !res.ok ) {
+        throw new Error( res.status )
+    }
+
+    return await res.json()
 }
 
 // GrapghQL Body
@@ -35,10 +35,10 @@ edges { node {
         externalIds { imdb }
     }
 } }
-`;
+`
 
 // Validate json data
-const TmdbValidate = json => json.filter( el => el.node && el.node.id );
+const TmdbValidate = json => json.filter( el => el.node && el.node.id )
 
 // Fetch Trending Movies
 const TmdbTrending = async () => {
@@ -48,9 +48,9 @@ const TmdbTrending = async () => {
                 ${qglBody}
             }
         }`
-    );
+    )
 
-    return await json.data ? TmdbValidate( json.data.trending.edges ) : [];
+    return await json.data ? TmdbValidate( json.data.trending.edges ) : []
 }
 
 // Search Movie by Title
@@ -61,9 +61,9 @@ const TmdbSearch = async movieTitle => {
                 ${qglBody}
             }
         }`, { movieTitle: movieTitle }
-    );
+    )
 
-    return await json.data ? TmdbValidate( json.data.search.edges ) : [];
+    return await json.data ? TmdbValidate( json.data.search.edges ) : []
 }
 
 export { TmdbSearch, TmdbTrending }

@@ -1,0 +1,82 @@
+/* ----- Container -------------------------------------------------------------------------------------------------- */
+
+.container {
+  display: block;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 12pt 4pt;
+}
+
+/* ----- App Bar ---------------------------------------------------------------------------------------------------- */
+
+.appbar {
+  /* Defaults */
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  height: 56px;
+  font-size: 12pt;
+  overflow-x: auto;
+  overflow-y: hidden;
+  user-select: none;
+  /* backface-visibility: hidden; */
+  box-shadow: 0 1.05pt 10.5pt 0.75pt rgba(0, 0, 0, 0.08), 0 3pt 4.2pt -1.5pt rgba(0, 0, 0, 0.09),
+    0 1.5pt 1.8pt -0.9pt rgba(0, 0, 0, 0.14);
+  font-size: 15pt;
+  font-weight: 500;
+  letter-spacing: 0.1125pt;
+  line-height: 1.4;
+
+  /* Customization */
+  background: linear-gradient(45deg, #e91e63, #2196f3);
+  color: white;
+  text-align: center;
+  justify-content: center;
+}
+
+/* ----- Hero ------------------------------------------------------------------------------------------------------- */
+
+.hero {
+  padding: 65pt 0;
+  background: url('../../images/bgHeroLanding.jpg') no-repeat center;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.hero:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(45deg, #4a011a, #002a4c);
+  opacity: 0.85;
+  z-index: -1;
+}
+
+/* ----- Footer ----------------------------------------------------------------------------------------------------- */
+
+.footer {
+  display: block;
+  margin-top: auto;
+  padding: 48pt 6pt;
+  background-color: #212121;
+  color: white;
+  text-align: center;
+}
+
+.footer a {
+  color: #bdbdbd;
+}
+
+.footer a:hover {
+  color: #dbdbdb;
+}

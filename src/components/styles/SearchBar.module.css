@@ -1,0 +1,24 @@
+.title {
+  color: white;
+  text-align: left;
+  max-width: 80%;
+  padding-left: 12pt;
+  font-size: 28px;
+}
+
+.search {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  background-color: white;
+  width: 100%;
+  padding: 8pt;
+  border-radius: 2pt;
+}
+
+.search input {
+  flex: 1;
+  background-color: transparent;
+  color: initial;
+  border: 0;
+}

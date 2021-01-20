@@ -1,0 +1,59 @@
+/* ----- Card ------------------------------------------------------------------------------------------------------- */
+
+.card {
+  display: flex;
+  position: relative;
+  width: 100%;
+  border: 1pt solid #ddd;
+  border-radius: 4pt;
+  margin-bottom: 8pt;
+  overflow: hidden;
+  /* Safari Hack, thanks for Apple */
+  height: 11.5em;
+}
+
+/* ----- Button ----------------------------------------------------------------------------------------------------- */
+
+.button {
+  /* Defaults */
+  -webkit-appearance: none;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  font: inherit;
+  font-weight: 500;
+  white-space: nowrap;
+  text-decoration: none;
+  line-height: 1;
+  vertical-align: middle;
+  cursor: pointer;
+  min-width: 48pt;
+  text-transform: uppercase;
+  font-size: 10.5pt;
+  margin: 4.5pt;
+  height: 27pt;
+  padding: 0 12pt;
+  border-radius: 1.5pt;
+  box-shadow: 0 0.525pt 5.25pt 0.375pt rgba(0, 0, 0, 0.08), 0 1.5pt 2.1pt -0.75pt rgba(0, 0, 0, 0.09),
+    0 0.75pt 0.9pt -0.45pt rgba(0, 0, 0, 0.14);
+
+  /* Customization */
+  background: linear-gradient(45deg, #e91e63, #2196f3);
+  color: white;
+  box-shadow: 0 0.525pt 5.25pt 0.375pt rgba(0, 0, 0, 0.16), 0 1.5pt 2.1pt -0.75pt rgba(0, 0, 0, 0.18),
+    0 0.75pt 0.9pt -0.45pt rgba(0, 0, 0, 0.28);
+}
+
+.button svg + span {
+  margin-left: 4pt;
+}
+
+.button:hover {
+  background: linear-gradient(45deg, #f84380, #49a5f0);
+}
+
+.button:active {
+  transform: translateY(1px);
+}
