@@ -1,6 +1,6 @@
 const Strings = {
     Defaults: {
-        TitleAppBar: "Welcome in React TMDb Test App",
+        TitleAppBar: "Welcome in React TMDb Example App",
         Line1Footer: "MIT License | Copyright © 2020 Zsolt Tovis",
         Line2Footer: "View Source Code on GitHub",
         LinkFooter: "https://github.com/toviszsolt/react-tmdb-test"
