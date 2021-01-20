@@ -80,7 +80,7 @@ const Extra = ( { data, extra, error, onClick, className } ) => {
                     { wikipediaLink }
                     { errorText }
                 </div>
-                { <div className={ styles.description }>{ extract }</div> }
+                <div className={ styles.description }>{ extract }</div>
             </div>
         )
     } else {
