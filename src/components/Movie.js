@@ -52,7 +52,7 @@ const Details = ( { data, onClick } ) => {
 
 /* ----- Details: Extra --------------------------------------------------------------------------------------------- */
 
-const Extra = ( { data, extra, onClick, className } ) => {
+const Extra = ( { data, extra, error, onClick, className } ) => {
     const imdbUrl = data && data.externalIds && 'https://imdb.com/title/' + data.externalIds.imdb
     const wikipediaUrl = extra && extra.canonicalurl
     const extract = extra && extra.extract
@@ -65,7 +65,11 @@ const Extra = ( { data, extra, onClick, className } ) => {
         ? <a href={ wikipediaUrl } target="_blank" rel="noreferrer" className={ styles.textTrim }>{ wikipediaUrl }</a>
         : ''
 
-    if ( extra ) {
+    const errorText = ( error )
+        ? Strings.Main.InfoError
+        : ''
+
+    if ( extra || error ) {
         return (
             <div className={ className }>
                 <div className={ `${styles.title} ${styles.textTrim}` } onClick={ onClick }>
@@ -74,6 +78,7 @@ const Extra = ( { data, extra, onClick, className } ) => {
                 <div>
                     { imdbLink }
                     { wikipediaLink }
+                    { errorText }
                 </div>
                 { <div className={ styles.description }>{ extract }</div> }
             </div>
@@ -93,6 +98,7 @@ const Extra = ( { data, extra, onClick, className } ) => {
 const Movie = ( { data } ) => {
     const [toggle, setToggle] = useState( false )
     const [extra, setExtra] = useState( null )
+    const [hasError, setHasError] = useState( false )
 
     const year = new Date( data.releaseDate ).getFullYear()
     const searchString = data.__typename === 'TVShowResult'
@@ -100,12 +106,13 @@ const Movie = ( { data } ) => {
         : `${data.title} ${year} film`
 
     const onClickHandler = () => {
+        setHasError( false )
         setToggle( !toggle )
 
         if ( !extra ) {
             WikipediaSearch( searchString )
                 .then( res => setExtra( res ) )
-                .catch( res => this.exceptionHandler( res ) )
+                .catch( res => setHasError( true ) )
         }
     }
 
@@ -120,6 +127,7 @@ const Movie = ( { data } ) => {
                 <Extra
                     data={ data }
                     extra={ extra }
+                    error={ hasError }
                     onClick={ onClickHandler }
                     className={ `${styles.extra} ${toggle ? styles.active : ''}` }
                 />
