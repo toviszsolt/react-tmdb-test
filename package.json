@@ -25,7 +25,7 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
+      "defaults",
       "not dead",
       "not op_mini all"
     ],
@@ -36,6 +36,8 @@
     ]
   },
   "devDependencies": {
-    "http-proxy-middleware": "^1.0.6"
+    "css-loader": "^5.0.1",
+    "http-proxy-middleware": "^1.0.6",
+    "style-loader": "^2.0.0"
   }
 }
