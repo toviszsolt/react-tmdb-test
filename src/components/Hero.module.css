@@ -1,0 +1,20 @@
+.hero {
+  padding: 65pt 0;
+  background: url('../images/bgHeroLanding.jpg') no-repeat center;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.hero:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(45deg, #4a011a, #002a4c);
+  opacity: 0.85;
+  z-index: -1;
+}

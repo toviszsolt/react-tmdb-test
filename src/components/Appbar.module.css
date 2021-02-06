@@ -1,0 +1,28 @@
+.appbar {
+  /* Defaults */
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  height: 56px;
+  font-size: 12pt;
+  overflow-x: auto;
+  overflow-y: hidden;
+  user-select: none;
+  /* backface-visibility: hidden; */
+  box-shadow: 0 1.05pt 10.5pt 0.75pt rgba(0, 0, 0, 0.08), 0 3pt 4.2pt -1.5pt rgba(0, 0, 0, 0.09),
+    0 1.5pt 1.8pt -0.9pt rgba(0, 0, 0, 0.14);
+  font-size: 15pt;
+  font-weight: 500;
+  letter-spacing: 0.1125pt;
+  line-height: 1.4;
+
+  /* Customization */
+  background: linear-gradient(45deg, #e91e63, #2196f3);
+  color: white;
+  text-align: center;
+  justify-content: center;
+}

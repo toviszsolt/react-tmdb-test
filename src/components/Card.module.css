@@ -1,0 +1,11 @@
+.card {
+  display: flex;
+  position: relative;
+  width: 100%;
+  border: 1pt solid #ddd;
+  border-radius: 4pt;
+  margin-bottom: 8pt;
+  overflow: hidden;
+  /* Safari Hack, thanks for Apple */
+  height: 11.5em;
+}

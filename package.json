@@ -1,6 +1,6 @@
 {
   "name": "react-tmdb-test",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
@@ -38,6 +38,11 @@
   },
   "devDependencies": {
     "css-loader": "^5.0.1",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "http-proxy-middleware": "^1.0.6",
     "style-loader": "^2.0.0"
   }
