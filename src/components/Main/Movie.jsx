@@ -19,6 +19,7 @@ const dateFormat = (dateString) => {
 const Poster = ({ data }) => {
   return (
     <img
+      loading="lazy"
       src={data.poster || PosterPlaceholder}
       alt={`${data.title} poster`}
       className={styles.poster}
