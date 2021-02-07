@@ -103,7 +103,7 @@ const Movie = ({ data }) => {
 
   const onClick = () => {
     setHasError(false);
-    setToggle(!toggle);
+    setToggle((prev) => !prev);
 
     if (!extra) {
       WikipediaSearch(searchString)
