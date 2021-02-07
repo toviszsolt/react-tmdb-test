@@ -29,14 +29,15 @@ const Poster = ({ data }) => {
 
 // Basic details component
 const Details = ({ data, onClick }) => {
-  const textGenres = (data.details.genres || []).map((el) => el.name).join(', ');
+  const genres = (data.details.genres || []).map((el) => el.name).join(', ');
+  const type = data.__typename.replace('Result', '');
 
   return (
     <div>
       <h3 className={`${styles.title} ${styles.textTrim}`} onClick={onClick} aria-hidden="true">
-        {data.title} &mdash; {data.__typename.replace('Result', '')}
+        {data.title} &mdash; {type}
       </h3>
-      <div className={styles.textTrim}>{textGenres}</div>
+      <div className={styles.textTrim}>{genres}</div>
       <div className={styles.released}>{dateFormat(data.releaseDate)}</div>
       <div className={styles.description}>{data.overview}</div>
       <div className={styles.rating}>{data.rating}</div>
