@@ -24,9 +24,9 @@ const Title = ({ loading, error, results }) => {
 };
 
 // List component
-const List = ({ data = [] }) => {
+const List = React.memo(({ data = [] }) => {
   return data && data.map((item, index) => <Movie key={index.toString()} data={item.node} />);
-};
+});
 
 // Result component
 const Results = () => {
