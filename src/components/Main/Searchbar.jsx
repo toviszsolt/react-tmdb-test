@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef } from 'react';
 import Button from '../Button';
 import Container from '../Container';
 import String from '../Strings';
@@ -8,15 +8,15 @@ import SearchContext from './SearchContext';
 // Searchbar component
 const Searchbar = () => {
   const [, setSearchString] = useContext(SearchContext);
-  const [inputValue, setinputValue] = useState('');
+  const inputValue = useRef('');
 
   const onSubmit = (e) => {
     e.preventDefault();
-    setSearchString(inputValue);
+    setSearchString(inputValue.current);
   };
 
   const onChange = (e) => {
-    setinputValue(e.target.value);
+    inputValue.current = e.target.value;
   };
 
   return (
