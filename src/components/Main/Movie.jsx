@@ -8,7 +8,7 @@ import styles from './Movie.module.css';
 
 // Date formatter
 const dateFormat = (dateString) => {
-  new Date(dateString).toLocaleDateString('en-EN', {
+  return new Date(dateString).toLocaleDateString('en-EN', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
@@ -29,7 +29,7 @@ const Poster = ({ data }) => {
 
 // Basic details component
 const Details = ({ data, onClick }) => {
-  const genres = (data.details.genres || []).map((el) => el.name).join(', ');
+  const genres = (data.genres || []).map((el) => el.name).join(', ');
   const type = data.__typename.replace('Result', '');
 
   return (

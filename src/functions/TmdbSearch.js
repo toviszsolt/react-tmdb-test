@@ -7,12 +7,14 @@ const API_ENDPOINT = '/api/';
 const qglBody = `
 totalCount pageInfo { hasNextPage endCursor }
 edges { node {
-    ... on MovieResult {
-        __typename id title rating releaseDate overview poster(size: W154) details { genres { name } }
+    ... on Movie {
+        __typename id title rating releaseDate overview poster(size: W154)
+        genres { name }
         externalIds { imdb }
     }
-    ... on TVShowResult {
-        __typename id title:name rating releaseDate:firstAirDate overview poster(size:W154) details { genres{ name } }
+    ... on TVShow {
+        __typename id title:name rating releaseDate:firstAirDate overview poster(size:W154)
+        genres{ name }
         externalIds { imdb }
     }
 } }
@@ -28,7 +30,12 @@ const TmdbFetch = async (query, variables) => {
 };
 
 // Validate the response data
-const TmdbValidate = (json) => json.filter((el) => el.node && el.node.id);
+const TmdbValidate = (data) => {
+  const res = data.filter(
+    (el) => el.node && el.node.id && el.node.externalIds && el.node.externalIds.imdb,
+  );
+  return res.sort((a, b) => Date.parse(b.node.releaseDate) - Date.parse(a.node.releaseDate));
+};
 
 // Get Trending results
 export const TmdbTrending = async () => {
@@ -45,7 +52,7 @@ export const TmdbTrending = async () => {
 
 // Get Search results
 export const TmdbSearch = async (movieTitle) => {
-  const json = await TmdbFetch(
+  const res = await TmdbFetch(
     `query($movieTitle: String!) {
             search(term: $movieTitle) {
                 ${qglBody}
@@ -54,5 +61,5 @@ export const TmdbSearch = async (movieTitle) => {
     { movieTitle },
   );
 
-  return json.data ? TmdbValidate(json.data.search.edges) : [];
+  return res.data ? TmdbValidate(res.data.search.edges) : [];
 };
