@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
-module.exports = function (app) {
+module.exports = function middleware(app) {
   app.use(
     '/api',
     createProxyMiddleware({
@@ -10,6 +10,6 @@ module.exports = function (app) {
       pathRewrite: {
         '^/api': '',
       },
-    }),
+    })
   );
 };
