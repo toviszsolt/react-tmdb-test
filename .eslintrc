@@ -1,7 +1,8 @@
 {
-  "extends": ["react-app", "airbnb", "airbnb/hooks"],
-  "plugins": ["react"],
+  "extends": ["react-app", "react-app/jest", "airbnb", "airbnb/hooks", "prettier"],
+  "plugins": ["react", "prettier"],
   "rules": {
+    "prettier/prettier": "error",
     "linebreak-style": "off",
     "react/prop-types": "off",
     "object-curly-newline": "off",

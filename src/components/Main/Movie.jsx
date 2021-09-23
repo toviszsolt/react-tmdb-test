@@ -1,9 +1,9 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useState } from 'react';
-import WikipediaSearch from '../../functions/WikipediaSearch';
+import WikipediaSearch from '../../modules/WikipediaSearch';
 import PosterPlaceholder from '../../images/moviePlaceholder.png';
-import Card from '../Card';
-import String from '../Strings';
+import Card from '../Common/Card';
+import String from '../../modules/Strings';
 import styles from './Movie.module.css';
 
 // Date formatter

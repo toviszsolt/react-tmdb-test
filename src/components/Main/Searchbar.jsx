@@ -1,22 +1,17 @@
-import React, { useContext, useRef } from 'react';
-import Button from '../Button';
-import Container from '../Container';
-import String from '../Strings';
+import React, { useContext } from 'react';
+import Button from '../Common/Button';
+import Container from '../Common/Container';
+import String from '../../modules/Strings';
 import styles from './Searchbar.module.css';
-import SearchContext from './SearchContext';
+import { SearchContext } from './SearchContextProvider';
 
 // Searchbar component
 const Searchbar = () => {
   const [, setSearchString] = useContext(SearchContext);
-  const inputValue = useRef('');
 
   const onSubmit = (e) => {
     e.preventDefault();
-    setSearchString(inputValue.current);
-  };
-
-  const onChange = (e) => {
-    inputValue.current = e.target.value;
+    setSearchString(e.target.search.value);
   };
 
   return (
@@ -33,7 +28,6 @@ const Searchbar = () => {
             type="text"
             name="search"
             placeholder={String.Main.Searchbar.titleSearchInput}
-            onChange={onChange}
           />
           <Button type="submit" text={String.Main.Searchbar.titleSearchButton} />
         </label>

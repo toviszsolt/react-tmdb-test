@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Container from '../Container';
-import SearchContext from './SearchContext';
+import Container from '../Common/Container';
+import { SearchContext } from './SearchContextProvider';
 import styles from './Results.module.css';
-import { TmdbSearch, TmdbTrending } from '../../functions/TmdbSearch';
+import { TmdbSearch, TmdbTrending } from '../../modules/TmdbSearch';
 import Movie from './Movie';
-import String from '../Strings';
+import String from '../../modules/Strings';
 
 // Title component
 const Title = ({ loading, error, results }) => {

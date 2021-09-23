@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Appbar.module.css';
 import Container from './Container';
-import String from './Strings';
+import String from '../../modules/Strings';
 
 const Appbar = () => {
   return (

@@ -32,7 +32,7 @@ const TmdbFetch = async (query, variables) => {
 // Validate the response data
 const TmdbValidate = (data) => {
   const res = data.filter(
-    (el) => el.node && el.node.id && el.node.externalIds && el.node.externalIds.imdb,
+    (el) => el.node && el.node.id && el.node.externalIds && el.node.externalIds.imdb
   );
   return res.sort((a, b) => Date.parse(b.node.releaseDate) - Date.parse(a.node.releaseDate));
 };
@@ -44,7 +44,7 @@ export const TmdbTrending = async () => {
             trending {
                 ${qglBody}
             }
-        }`,
+        }`
   );
 
   return res.data ? TmdbValidate(res.data.trending.edges) : [];
@@ -58,7 +58,7 @@ export const TmdbSearch = async (movieTitle) => {
                 ${qglBody}
             }
         }`,
-    { movieTitle },
+    { movieTitle }
   );
 
   return res.data ? TmdbValidate(res.data.search.edges) : [];

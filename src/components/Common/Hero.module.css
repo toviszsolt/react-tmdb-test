@@ -1,6 +1,6 @@
 .hero {
   padding: 65pt 0;
-  background: url('../images/bgHeroLanding.jpg') no-repeat center;
+  background: url('../../images/bgHeroLanding.jpg') no-repeat center;
   background-size: cover;
   position: relative;
   z-index: 1;

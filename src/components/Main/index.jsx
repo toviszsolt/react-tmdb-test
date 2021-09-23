@@ -1,23 +1,21 @@
-import React, { useState } from 'react';
-import Appbar from '../Appbar';
-import Footer from '../Footer';
-import Hero from '../Hero';
+import React from 'react';
+import Appbar from '../Common/Appbar';
+import Footer from '../Common/Footer';
+import Hero from '../Common/Hero';
 import Results from './Results';
 import Searchbar from './Searchbar';
-import SearchContext from './SearchContext';
+import { SearchContextProvider } from './SearchContextProvider';
 
 const Main = () => {
-  const [searchString, setSearchStrinig] = useState('');
-
   return (
-    <SearchContext.Provider value={[searchString, setSearchStrinig]}>
+    <SearchContextProvider>
       <Appbar />
       <Hero>
         <Searchbar />
       </Hero>
       <Results />
       <Footer />
-    </SearchContext.Provider>
+    </SearchContextProvider>
   );
 };
 
