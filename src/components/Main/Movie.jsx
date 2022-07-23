@@ -40,7 +40,7 @@ const Details = ({ data, onClick }) => {
       <div className={styles.textTrim}>{genres}</div>
       <div className={styles.released}>{dateFormat(data.releaseDate)}</div>
       <div className={styles.description}>{data.overview}</div>
-      <div className={styles.rating}>{data.rating}</div>
+      <div className={styles.rating}>{data.rating.toFixed(1)}</div>
     </div>
   );
 };

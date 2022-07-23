@@ -3,10 +3,11 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = function middleware(app) {
   app.use(
-    '/api',
+    '/api/',
     createProxyMiddleware({
       target: 'https://tmdb.apps.quintero.io/',
       changeOrigin: true,
+      secure: false,
       pathRewrite: {
         '^/api': '',
       },
